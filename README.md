@@ -4,7 +4,7 @@ Fac simplifies JavaScript programming. With Fac, we no longer need to simulate C
 
 Let us forget about object-oriented programming, forget to simulate object-oriented programming in JavaScript, and forget the following concepts: classes, inheritance (multiple inheritance, combined inheritance, parasitic inheritance, parasitic combination inheritance) and mixins. 
 
-Again, we just need object and extending. JavaScript programming should have been so simple. With Fac, all this is so natural. Fac is only 3KB gzipped, with no dependency, and can be used in [Node.js](https://nodejs.org) and in browsers. Fac is the abbreviation of "factory". 
+Again, we just need object and extending. JavaScript programming should have been so simple. With Fac, all this is so natural. Fac is only 1KB gzipped, with no dependency, and can be used in [Node.js](https://nodejs.org) and in browsers. Fac is the abbreviation of "factory". 
 
 
 
@@ -35,10 +35,10 @@ Animal.js (base object)
 var fac = require('fac');
 
 var Animal = {
-	name: 'animal',
-	sayHi: function(){
-		console.log('Hi from ' + this.name);
-	}
+    name: 'animal',
+    sayHi: function(){
+        console.log('Hi from ' + this.name);
+    }
 };
 
 // Use fac() to pack the Object Animal, important.
@@ -53,10 +53,10 @@ var Animal = require('./Animal');
 
 // Animal extended to Mammal
 var Mammal = Animal.extend({
-	name: 'mammal', // Cover the name
-	run: function(){ // New method of Mammal
-		console.log('Running...');
-	}
+    name: 'mammal', // Cover the name
+    run: function(){ // New method of Mammal
+        console.log('Running...');
+    }
 });
 
 module.exports = fac(Mammal);
@@ -69,20 +69,20 @@ var Mammal = require('./Mammal');
 
 // Mammal extended to Dog
 var Dog = Mammal.extend({
-	name: 'dog',
-	
-	// For Initializing the instance of Dog.
-	// If the Dog has init(), the name must be "init". 
-	// Or, the Dog has no init().
-	init: function(name, age, sex){
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-	},
+    name: 'dog',
+    
+    // For Initializing the instance of Dog.
+    // If the Dog has init(), the name must be "init". 
+    // Or, the Dog has no init().
+    init: function(name, age, sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    },
   
-	swim: function(){
-		console.log('Swimming...');
-	}
+    swim: function(){
+        console.log('Swimming...');
+    }
 });
 
 module.exports = fac(Dog);
@@ -111,9 +111,9 @@ console.log(dog.sex); // boy
 SuperBase.js (base object)
 ```js
 var SuperBase = {
-	sing: function(){
-		console.log('Singing...');
-	}
+    sing: function(){
+        console.log('Singing...');
+    }
 };
 module.exports = fac(SuperBase);
 ```
@@ -121,9 +121,9 @@ module.exports = fac(SuperBase);
 SuperDance.js (base object)
 ```js
 var SuperDance = {
-	dance: function(){
-		console.log('Dancing...');
-	}
+    dance: function(){
+        console.log('Dancing...');
+    }
 };
 module.exports = fac(SuperDance);
 ```
@@ -131,9 +131,9 @@ module.exports = fac(SuperDance);
 SuperFly.js (base object)
 ```js
 var SuperFly = {
-	fly: function(){
-		console.log('Flying...');
-	}
+    fly: function(){
+        console.log('Flying...');
+    }
 };
 module.exports = fac(SuperFly);
 ```
@@ -145,9 +145,9 @@ var Fly = require('./SuperFly');
 var Dance = require('./SuperDance');
 
 var Super = Base.extend(Fly, Dance, {
-	fight: function(){
-		console.log('Fighting...');
-	}
+    fight: function(){
+        console.log('Fighting...');
+    }
 });
 
 module.exports = fac(Super);
@@ -159,16 +159,16 @@ var Mammal = require('./Mammal');
 var Super = require('./Super');
 
 var Dog = Mammal.extend(Super, {
-	name: 'super-dog',
-	init: function(name, age, sex){
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-	},
-	swim: function(){
-		log('Swimming...');
-		return 'swim';
-	}
+    name: 'super-dog',
+    init: function(name, age, sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    },
+    swim: function(){
+        log('Swimming...');
+        return 'swim';
+    }
 });
 
 module.exports = fac(Dog);
