@@ -1,7 +1,7 @@
 {
   "name": "fac",
-  "version": "1.0.3",
-  "description": "Simplifies JavaScript programming. Just use Object and extending",
+  "version": "1.0.4",
+  "description": "Simplify JavaScript programming. Just use Object and extending.",
   "main": "main.js",
   "repository": {
     "type": "git",

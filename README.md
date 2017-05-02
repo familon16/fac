@@ -2,9 +2,9 @@
 
 Fac simplifies JavaScript programming. With Fac, we no longer need to simulate C++, Java or any other languages, no longer need to simulate classes and inheritance, just use **object** and **extending**.
 
-Let us forget about object-oriented programming, forget to simulate object-oriented programming in JavaScript, and forget the following concepts: classes, inheritance (multiple inheritance, combined inheritance, parasitic inheritance, parasitic combination inheritance) and mixins. 
+Let us forget about object-oriented programming, forget to simulate object-oriented programming in JavaScript, and forget the following concepts: classes, inheritance, multiple inheritance, combined inheritance, parasitic inheritance, parasitic combination inheritance, and mixins. 
 
-Again, we just need object and extending. JavaScript programming should have been so simple. With Fac, all this is so natural. Fac is only 1KB gzipped, with no dependency, and can be used in [Node.js](https://nodejs.org) and in browsers. Fac is the abbreviation of "factory". 
+Again, we just need object and extending. JavaScript programming should have been so simple. With Fac, all this is so natural. Fac is only 1KB gzipped with no dependency, and can be used in [Node.js](https://nodejs.org) and in browsers. Fac is the abbreviation of "factory". 
 
 
 
@@ -53,8 +53,12 @@ var Animal = require('./Animal');
 
 // Animal extended to Mammal
 var Mammal = Animal.extend({
-    name: 'mammal', // Cover the name
-    run: function(){ // New method of Mammal
+  
+    // Cover the name
+    name: 'mammal', 
+  
+    // New method of Mammal
+    run: function(){ 
         console.log('Running...');
     }
 });
@@ -88,12 +92,12 @@ var Dog = Mammal.extend({
 module.exports = fac(Dog);
 ```
 
-**dog.js (instance of Dog)**
+**dog.js (an instance of Dog)**
 ```js
 var Dog = require('./Dog');
 var dog = Dog('Tobe', 2, 'boy');  // Create an instance of Dog.
-//var dog = Dog.new('Lucky', 2, 'boy');  // or .new(), as you will.
-//var dog = Dog.create('Lucky', 2, 'boy');  // or .create().
+//var dog = Dog.new('Tobe', 2, 'boy');  // or .new(), as you wish.
+//var dog = Dog.create('Tobe', 2, 'boy');  // or .create().
 
 dog.sayHi(); // Hi from Tobe
 dog.run(); // Running...
@@ -108,41 +112,44 @@ console.log(dog.sex); // boy
 
 ## Example of Multiple Extending
 
-SuperBase.js (base object)
+Base.js (base object)
 ```js
-var SuperBase = {
+var Base = {
     sing: function(){
         console.log('Singing...');
     }
 };
-module.exports = fac(SuperBase);
+
+module.exports = fac(Base);
 ```
 
-SuperDance.js (base object)
+Dance.js (base object)
 ```js
-var SuperDance = {
+var Dance = {
     dance: function(){
         console.log('Dancing...');
     }
 };
-module.exports = fac(SuperDance);
+
+module.exports = fac(Dance);
 ```
 
-SuperFly.js (base object)
+Fly.js (base object)
 ```js
-var SuperFly = {
+var Fly = {
     fly: function(){
         console.log('Flying...');
     }
 };
-module.exports = fac(SuperFly);
+
+module.exports = fac(Fly);
 ```
 
-Super.js (extended from SuperBase, SuperFly, SuperDance)
+Super.js (extended from Base, Fly, Dance)
 ```js
-var Base = require('./SuperBase');
-var Fly = require('./SuperFly');
-var Dance = require('./SuperDance');
+var Base = require('./Base');
+var Fly = require('./Fly');
+var Dance = require('./Dance');
 
 var Super = Base.extend(Fly, Dance, {
     fight: function(){
@@ -160,21 +167,22 @@ var Super = require('./Super');
 
 var Dog = Mammal.extend(Super, {
     name: 'super-dog',
+  
     init: function(name, age, sex){
         this.name = name;
         this.age = age;
         this.sex = sex;
     },
+  
     swim: function(){
-        log('Swimming...');
-        return 'swim';
+        console.log('Swimming...');
     }
 });
 
 module.exports = fac(Dog);
 ```
 
-**super-dog.js (instance of SuperDog)**
+**super-dog.js (an instance of SuperDog)**
 ```js
 var Dog = require('./SuperDog');
 var dog = Dog('Super-Tobe', 2, 'boy');
@@ -182,6 +190,7 @@ var dog = Dog('Super-Tobe', 2, 'boy');
 dog.sayHi(); // Hi from Super-Tobe
 dog.run(); // Running...
 dog.swim(); // Swimming...
+
 dog.fly(); // Flying...
 dog.dance(); // Dancing...
 dog.sing(); // Singing...
