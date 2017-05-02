@@ -1,7 +1,7 @@
 {
   "name": "fac",
-  "version": "1.0.4",
-  "description": "Simplify JavaScript programming. Just use Object and extending.",
+  "version": "1.0.5",
+  "description": "Simplify JavaScript programming. Just use Object and Extending instead of Classes and Inheritance.",
   "main": "main.js",
   "repository": {
     "type": "git",
