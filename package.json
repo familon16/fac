@@ -15,7 +15,8 @@
     "inheritance"
   ],
   "scripts": {
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcov -- -R spec && codecov -t 399e5770-e813-49e8-a383-082a287e515f"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcov -- -R spec && codecov -t 399e5770-e813-49e8-a383-082a287e515f",
+    "appveyor": "mocha"
   },
   "author": "hi.owen.luke@gmail.com",
   "license": "MIT",
