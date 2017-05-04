@@ -74,7 +74,6 @@
 			do: function(obj){
 				this.createNew(obj);
 				this.createEntry(obj);
-				this.appendSet(obj);
 				this.appendExtend(obj);
 				this.resetProto(obj);
 				return this.obj.__entry__;
@@ -86,6 +85,11 @@
 				this.obj.__new__ = function(){
 					var o = Object.create(obj);
 					o.init && o.init.apply(o, arguments);
+
+					o.isInstanceof = function(target){
+						return obj === target.__proto__;
+					};
+
 					return o;
 				};
 
@@ -99,21 +103,13 @@
 
 				this.obj.__entry__ = fn;
 				this.obj.__entry__.new = fn;
-				this.obj.__entry__.create = fn;
 
 				Object.defineProperty(this.obj, '__entry__', {
 					enumerable: false
 				});
 			},
 
-			appendSet: function(obj){
-				var entry = this.obj.__entry__;
-				entry.set = function(prop, val){
-					obj[prop] = val;
-				};
-			},
-
-			appendExtend: function(){
+			appendExtend: function(obj){
 				var entry = this.obj.__entry__;
 				entry.extend = function(){
 
@@ -125,7 +121,6 @@
 						extend(newObj, obj);
 					});
 
-					newObj.__proto__ = this;
 					return newObj;
 				};
 			},
@@ -167,12 +162,18 @@
 
 						// If the target is not an indeed Object,
 						// then set is as an Object.
+
+						/* istanbul ignore else */
 						if (!is.object(target[key])) {
 							target[key] = {};
 						}
 
 						// Recursive
-						extend.do(target[key], source[key]);
+
+						/* istanbul ignore else */
+						if (target[key] !== source[key]) {
+							extend.do(target[key], source[key]);
+						}
 					}
 
 					// Copy general properties to target.

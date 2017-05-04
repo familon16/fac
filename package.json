@@ -1,7 +1,7 @@
 {
   "name": "fac",
-  "version": "1.0.5",
-  "description": "Simplify JavaScript programming. Just use Object and Extending instead of Classes and Inheritance.",
+  "version": "1.0.6",
+  "description": "Simplify JavaScript programming. Just use object and extending instead of classes and inheritance.",
   "main": "main.js",
   "repository": {
     "type": "git",
@@ -15,19 +15,20 @@
     "inheritance"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcov -- -R spec && codecov -t 399e5770-e813-49e8-a383-082a287e515f"
   },
   "author": "hi.owen.luke@gmail.com",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.3.0",
+    "codecov": "^2.1.0",
     "gulp": "^3.9.1",
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
     "gulp-webpack": "^1.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
     "through2": "^2.0.3",
     "webpack": "^2.2.1"
   }
