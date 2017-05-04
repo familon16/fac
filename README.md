@@ -275,6 +275,3 @@ Copyright (c) 2017, Owen Luke
 [npm-url]: https://npmjs.org/package/fac
 [license-image]: https://img.shields.io/npm/l/fac.svg
 [license-url]: https://npmjs.org/package/fac
-```
-
-```
