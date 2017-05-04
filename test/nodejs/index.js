@@ -11,6 +11,7 @@
 		'./Animal.test',
 		'./Dog.test',
 		'./Dog-Super.test',
+		'./instance.test',
 		'./Mammal.test'
 	];
 

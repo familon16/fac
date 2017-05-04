@@ -1,7 +1,7 @@
 /**
  * Fac.js
  * (c) 2017 Owen Luke
- * https://github.com/hiowenluke/fac
+ * https://github.com/tasjs/fac
  * Released under the MIT License.
  */
 
