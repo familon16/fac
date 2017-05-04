@@ -1,5 +1,12 @@
 ## Fac.js
 
+[![Linux Build][travis-image]][travis-url] 
+[![Windows Build][appveyor-image]][appveyor-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
+[![NPM Version][npm-image]][npm-url]
+[![License][license-image]][license-url]
+
+
 Fac simplifies JavaScript programming. With Fac, we no longer need to simulate C++, Java or any other languages, no longer need to simulate classes and inheritance, just use **object** and **extending**.
 
 Let us forget about object-oriented programming, forget to simulate object-oriented programming in JavaScript, and forget the following concepts: classes, inheritance, multiple inheritance, combined inheritance, parasitic inheritance, parasitic combination inheritance, and mixins. 
@@ -97,7 +104,6 @@ module.exports = fac(Dog);
 var Dog = require('./Dog');
 var dog = Dog('Tobe', 2, 'boy');  // Create an instance of Dog.
 //var dog = Dog.new('Tobe', 2, 'boy');  // or .new(), as you wish.
-//var dog = Dog.create('Tobe', 2, 'boy');  // or .create().
 
 dog.sayHi(); // Hi from Tobe
 dog.run(); // Running...
@@ -203,9 +209,72 @@ console.log(dog.sex); // boy
 
 　
 
+## API
+
+Fac has only one method to pack object. For Eaxample:
+
+```js
+var User = {
+    init: function(username, password){
+        this.username = username;
+        this.password = password;
+    }
+};
+
+// Pack User to User()
+User = fac(User);
+```
+
+　
+
+The Fac packed object has three apis:
+
+1. () and new(), their are equivalent:
+```js
+// Use User() instead of Object.create(User).init(), neat!
+var Jack = User('Jack', '123456');
+var Rose = User.new('Rose', '123456');
+```
+
+2. extend():
+```js
+var Mammal = require('./Mammal');
+var Super = require('./Super');
+
+var Dog = Mammal.extend(Super, {
+    init: function(name, age){
+        this.name = name;
+        this.age = age;
+    }
+});
+```
+
+　
+
+The instance of the Fac packed object has only one api, isInstanceof():
+```js
+var user = User(); 
+console.log(user.isInstanceof(User)); // true
+```
+
+　
+
 ## License
 
 [MIT](LICENSE)
 
 Copyright (c) 2017, Owen Luke
 
+[travis-image]: https://img.shields.io/travis/tasjs/fac/master.svg?label=linux
+[travis-url]: https://travis-ci.org/tasjs/fac
+[appveyor-image]: https://img.shields.io/appveyor/ci/tasjs/fac/master.svg?label=windows
+[appveyor-url]: https://ci.appveyor.com/project/tasjs/fac
+[coveralls-image]: https://img.shields.io/codecov/c/github/tasjs/fac/master.svg
+[coveralls-url]: https://codecov.io/gh/tasjs/fac
+[npm-image]: https://img.shields.io/npm/v/fac.svg
+[npm-url]: https://npmjs.org/package/fac
+[license-image]: https://img.shields.io/npm/l/fac.svg
+[license-url]: https://npmjs.org/package/fac
+```
+
+```
